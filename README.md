@@ -1,2 +1,2 @@
-# cgm-visibility-graph-dataset
-Contains the visibility graph from a CGM dataset as tfrecord files.
+# Continous Glucose Monitoring Data as Visibility Graphs
+This repository contains visibility graphs for continous glucose monitoring data.
