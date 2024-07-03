@@ -1,0 +1,63 @@
+node_sets {
+  key: "datapoint"
+  value {
+    description: "A datapoint of the continuous glucose monitoring."
+
+    features {
+      key: "reading"
+      value: {
+        description: "The reading value of the datapoint."
+        dtype: DT_INT32
+      }
+    }
+    features {
+      key: "order"
+      value: {
+        description: "The position of this node in the time series. 0 = first node, 1 = second node, etc"
+        dtype: DT_INT32
+      }
+    }
+
+  }
+}
+
+edge_sets {
+  key: "visible"
+  value {
+    description: "A visibility-relationship between two datapoints in the gcm."
+    source: "datapoint"
+    target: "datapoint"
+
+    features {
+      key: "distance"
+      value: {
+        description: "The distance between the two datapoints."
+        dtype: DT_FLOAT
+      }
+    }
+  }
+}
+
+context {
+  features {
+    key: "critical"
+    value: {
+      description: "The label of this cgm graph (0 -> non-critical; 1 -> critical)."
+      dtype: DT_INT32
+    }
+  }
+  features {
+    key: "patient_id"
+    value: {
+      description: "The patient ID from which this graph originated."
+      dtype: DT_STRING
+    }
+  }
+  features {
+    key: "true_proportion"
+    value: {
+      description: "The proportion of true labels (critical = 1) in the dataset of this patient."
+      dtype: DT_FLOAT
+    }
+  }
+}
